@@ -5,7 +5,7 @@ namespace App\Validators;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\ValidationException;
 
-class InsuranceRequestValidator
+final class InsuranceRequestValidator
 {
     /**
      * @throws ValidationException

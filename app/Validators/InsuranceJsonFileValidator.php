@@ -5,7 +5,7 @@ namespace App\Validators;
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
 
-class InsuranceJsonFileValidator
+final class InsuranceJsonFileValidator
 {
     /**
      * @throws ValidationException

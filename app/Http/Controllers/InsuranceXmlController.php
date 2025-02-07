@@ -7,7 +7,7 @@ use Illuminate\Validation\ValidationException;
 use Illuminate\Support\Facades\{Artisan, File};
 use Illuminate\Http\{JsonResponse, Response, Request};
 
-class InsuranceXmlController extends Controller
+final class InsuranceXmlController extends Controller
 {
     public function uploadJson(Request $request): JsonResponse|Response
     {
@@ -46,7 +46,7 @@ class InsuranceXmlController extends Controller
         } catch (\Exception $e) {
             return response()->json([
                 'message' => $e->getMessage()
-            ], 500);
+            ], 400);
         }
     }
 }
