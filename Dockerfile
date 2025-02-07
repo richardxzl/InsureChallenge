@@ -22,8 +22,5 @@ RUN php artisan storage:link
 # Dar permisos a las carpetas de almacenamiento y caché
 RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
 
-# Generar la clave de la aplicación
-RUN php artisan key:generate
-
 # Exponer el puerto 80
 EXPOSE 80

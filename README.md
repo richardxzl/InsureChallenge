@@ -1,66 +1,63 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+## ACME INSURE CHALLENGE
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+### Clonar Repositorio
+- `git clone https://github.com/richardxzl/InsureChallenge.git`
+- `cd InsureChallenge`
 
-## About Laravel
+- El siguiente paso para la instalación y/o configuración del challenge tienen la opción de levantar los contenedores con docker-compose o hacerlo de forma manual.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+1) Si deciden levantarlo por docker, deben tener instalado docker y docker-compose y seguir estos pasos a continuación:
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+    - `docker-compose up --build -d`
+    - Debería decir algo como esto:
+        - ![](https://github.com/richardxzl/InsureChallenge/blob/master/app/images/docker-compose-build.png)
+      
+    - El siguiente paso es ejecutar el siguiente comando para instalar las dependencias de composer:
+        - `composer install`
+      
+    - Al final les saldrá algo como esto:
+        - ![](https://github.com/richardxzl/InsureChallenge/blob/master/app/images/composer-install.png)
+      
+    - Luego ejecutar el siguiente comando para generar la key de la aplicación de Laravel:
+        - `php artisan key:generate`
+      
+    - Verán esto:
+        - ![](https://github.com/richardxzl/InsureChallenge/blob/master/app/images/key-generate.png)
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+2) Si deciden hacerlo de forma manual, deben tener instalado PHP 8.2, Composer, Laravel y seguir estos pasos a continuación:
 
-## Learning Laravel
+    - Ejecutar el siguiente comando: `composer install`
+    - Deben copiar el archivo `.env.example` y renombrarlo a `.env`
+    - Ejecutar el comando: `php artisan key:generate`
+    - Si todo va bien deben tener resultados muy parecidas a las imágenes anteriores.
+    - Para levantar el servidor de Laravel ejecutar el siguiente comando:
+        - `php artisan serve --host=0.0.0.0 --port=8080`
+        - ![](https://github.com/richardxzl/InsureChallenge/blob/master/app/images/artisan-serve.png)
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+## Endpoint disponible
+- Api Upload Json
+    - [http://localhost:8000/api/upload-json](http://localhost:8000/api/upload-json)
+  
+    - Es una petición POST donde tienen que subir el archivo en el body de la petición -> form-data -> key: jsonFile (File), y suben su JSON. 
+  
+    - Debería verse algo como esto, tambien pueden descargar el XML que se genera:
+        - ![](https://github.com/richardxzl/InsureChallenge/blob/master/app/images/api-post.png)
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
 
-## Laravel Sponsors
+## Ejecutar Comando por linea de comandos (terminal)
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+- `php artisan  generate:insurance-xm {jsonFilePath}`
 
-### Premium Partners
+    - Ejemplo: `php artisan generate:insurance-xml storage/app/public/data/dataWithYoungDriver.json` pueden poner cualquier ruta de un archivo JSON que tengan en su máquina.
+    - ![](https://github.com/richardxzl/InsureChallenge/blob/master/app/images/command-line.png)
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+## Ejecutar tests
 
-## Contributing
+- `php artisan test`
+    - ![](https://github.com/richardxzl/InsureChallenge/blob/master/app/images/tests.png)
+  
+- También pueden ejecutar este comando `vendor/bin/phpunit`
+    - ![](https://github.com/richardxzl/InsureChallenge/blob/master/app/images/tests2.png)
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
 
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
