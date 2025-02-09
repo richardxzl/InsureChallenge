@@ -55,10 +55,10 @@
 ## Ejecutar tests
 
 - `php artisan test`
-    - ![](https://github.com/richardxzl/insure-challenge/blob/master/documentation/images/tests.png)
+    - ![](https://github.com/richardxzl/insure-challenge/blob/master/documentation/images/test3.png)
   
 - También pueden ejecutar este comando `vendor/bin/phpunit`
-    - ![](https://github.com/richardxzl/insure-challenge/blob/master/documentation/images/tests2.png)
+    - ![](https://github.com/richardxzl/insure-challenge/blob/master/documentation/images/tests4.png)
 
 
 #### Ejemplos de JSON
